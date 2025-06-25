@@ -1,6 +1,10 @@
 
 import SalesRanking from "@/components/SalesRanking";
 import SalesStats from "@/components/SalesStats";
+import SalesInsights from "@/components/SalesInsights";
+import SalesDashboard from "@/components/SalesDashboard";
+import ActionableInsights from "@/components/ActionableInsights";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Index = () => {
   return (
@@ -14,7 +18,31 @@ const Index = () => {
         </div>
         
         <SalesStats />
-        <SalesRanking />
+
+        <Tabs defaultValue="ranking" className="w-full">
+          <TabsList className="grid w-full grid-cols-4 mb-8">
+            <TabsTrigger value="ranking">Ranking</TabsTrigger>
+            <TabsTrigger value="insights">Insights</TabsTrigger>
+            <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
+            <TabsTrigger value="acoes">Ações</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="ranking">
+            <SalesRanking />
+          </TabsContent>
+
+          <TabsContent value="insights">
+            <SalesInsights />
+          </TabsContent>
+
+          <TabsContent value="dashboard">
+            <SalesDashboard />
+          </TabsContent>
+
+          <TabsContent value="acoes">
+            <ActionableInsights />
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   );
